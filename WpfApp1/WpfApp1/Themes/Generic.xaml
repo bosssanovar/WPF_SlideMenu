@@ -96,7 +96,7 @@
                                 </Grid.ColumnDefinitions>
 
                                 <!--  ハンバーガー ボタン  -->
-                                <Button Grid.Column="1" x:Name="HamburgerButton" Content="≡"
+                                <Button Grid.Column="1" x:Name="HamburgerButton" Content="≡" FontSize="20" Padding="0"
                                         WindowChrome.IsHitTestVisibleInChrome="True"
                                         Command="{Binding MenuButtonClicked}"/>
 

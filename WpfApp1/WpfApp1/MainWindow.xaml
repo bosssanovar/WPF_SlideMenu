@@ -14,5 +14,10 @@
                    Text="MainWindowView" Foreground="White"/>
         <Button Content="Button" HorizontalAlignment="Left" Margin="282,237,0,0" VerticalAlignment="Top"
                 Command="{Binding ShowWindow2}"/>
+        <Grid x:Name="Menu" Background="#AA000000" Visibility="Collapsed" d:Visibility="Visible"
+                  local:VisibilityAnimation.AnimationType="Fade"
+              PreviewMouseDown="Menu_PreviewMouseDown">
+            <Grid Background="DimGray" HorizontalAlignment="Left" Width="300"/>
+        </Grid>
     </Grid>
 </local:WindowBase>

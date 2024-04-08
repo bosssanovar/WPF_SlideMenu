@@ -35,6 +35,19 @@ namespace WpfApp1
 
         protected override void OnMenuButtonClicked()
         {
+            if (Menu.Visibility == Visibility.Collapsed)
+            {
+                Menu.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                Menu.Visibility = Visibility.Collapsed;
+            }
+        }
+
+        private void Menu_PreviewMouseDown(object sender, MouseButtonEventArgs e)
+        {
+            Menu.Visibility = Visibility.Collapsed;
         }
     }
 }

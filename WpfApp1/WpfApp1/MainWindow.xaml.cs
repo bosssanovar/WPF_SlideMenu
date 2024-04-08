@@ -32,5 +32,9 @@ namespace WpfApp1
 
             InitializeComponent();
         }
+
+        protected override void OnMenuButtonClicked()
+        {
+        }
     }
 }

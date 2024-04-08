@@ -2,6 +2,7 @@
 <ResourceDictionary
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:ui="http://schemas.modernwpf.com/2019"
     xmlns:local="clr-namespace:WpfApp1">
 
     <Style x:Key="SystemButton" TargetType="Button">
@@ -16,7 +17,7 @@
         <Setter Property="HorizontalContentAlignment" Value="Center"/>
         <Setter Property="VerticalContentAlignment" Value="Center"/>
     </Style>
-    
+
     <!-- 最大化、最小化のボタン用 -->
     <Style x:Key="SystemMaxMiniButton" TargetType="Button" BasedOn="{StaticResource SystemButton}">
         <Setter Property="Template">
@@ -84,6 +85,7 @@
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="3"/>
                                     <ColumnDefinition Width="30"/>
+                                    <ColumnDefinition Width="30"/>
                                     <ColumnDefinition Width="3"/>
                                     <ColumnDefinition Width="*"/>
                                     <ColumnDefinition Width="3"/>
@@ -93,21 +95,26 @@
                                     <ColumnDefinition Width="8"/>
                                 </Grid.ColumnDefinitions>
 
+                                <!--  ハンバーガー ボタン  -->
+                                <Button Grid.Column="1" x:Name="HamburgerButton" Content="≡"
+                                        WindowChrome.IsHitTestVisibleInChrome="True"
+                                        Command="{Binding MenuButtonClicked}"/>
+
                                 <!--アプリアイコン-->
                                 <!--<Image Grid.Column="1"
                                        Source="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Icon}"/>-->
-                                <Ellipse Grid.Column="1" Fill="SkyBlue" Margin="3"/>
+                                <Ellipse Grid.Column="2" Fill="SkyBlue" Margin="3"/>
 
                                 <!--タイトル文字列-->
-                                <TextBlock Grid.Column="3" Text="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Title}"  
+                                <TextBlock Grid.Column="4" Text="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Title}"  
                                            Foreground="White" VerticalAlignment="Center" FontSize="15" TextTrimming="CharacterEllipsis"/>
 
                                 <!--キャプションボタン-->
-                                <Button Grid.Column="5" Content="0" WindowChrome.IsHitTestVisibleInChrome="True"
+                                <Button Grid.Column="6" Content="0" WindowChrome.IsHitTestVisibleInChrome="True"
                                         Command="{Binding WindowMinimum}" Style="{StaticResource SystemMaxMiniButton}"/>
-                                <Button Grid.Column="6" Content="{Binding ButtonStyle.Value}" WindowChrome.IsHitTestVisibleInChrome="True"
+                                <Button Grid.Column="7" Content="{Binding ButtonStyle.Value}" WindowChrome.IsHitTestVisibleInChrome="True"
                                         Command="{Binding WindowSize}" Style="{StaticResource SystemMaxMiniButton}"/>
-                                <Button Grid.Column="7" Content="r" WindowChrome.IsHitTestVisibleInChrome="True"
+                                <Button Grid.Column="8" Content="r" WindowChrome.IsHitTestVisibleInChrome="True"
                                         Command="{Binding WindowClose}" Style="{StaticResource SystemCloseButton}"/>
                             </Grid>
 
@@ -126,7 +133,7 @@
                         <Trigger Property="WindowState" Value="Normal">
                             <Setter TargetName="border" Property="BorderThickness" Value="1"/>
                         </Trigger>
-                        
+
                         <!--ウィンドウが非アクティブ時のタイトルバー色を切り替える-->
                         <Trigger Property="IsActive" Value="False">
                             <Setter TargetName="titleBar" Property="Background" Value="DarkGray"/>

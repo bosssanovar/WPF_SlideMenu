@@ -32,6 +32,8 @@ namespace WpfApp1
         // ウインドウを閉じるボタンが押された時
         public ReactiveCommand WindowClose { get; } = new();
 
+        public ReactiveCommand MenuButtonClicked { get; } = new();
+
         // 最大化、通常サイズのボタンデザイン切り替え
         public ReactivePropertySlim<string> ButtonStyle { get; } = new("1");
 
@@ -51,6 +53,8 @@ namespace WpfApp1
             WindowSize.Subscribe(_ => this.WindowState = this.WindowState == WindowState.Normal ? WindowState.Maximized : WindowState.Normal).AddTo(Disposable);
             // 閉じるボタンが押された
             WindowClose.Subscribe(_ => Window.GetWindow(this).Close()).AddTo(Disposable);
+
+            MenuButtonClicked.Subscribe(_=> OnMenuButtonClicked()).AddTo(Disposable);
         }
 
         private void WindowBase_StateChanged(object? sender, EventArgs e)
@@ -62,5 +66,7 @@ namespace WpfApp1
         {
             Disposable.Dispose();
         }
+
+        protected virtual void OnMenuButtonClicked() { }
     }
 }

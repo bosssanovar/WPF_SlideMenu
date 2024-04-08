@@ -38,15 +38,18 @@ namespace WpfApp1
             if (Menu.Visibility == Visibility.Collapsed)
             {
                 Menu.Visibility = Visibility.Visible;
+                MenuContent.Visibility = Visibility.Visible;
             }
             else
             {
+                MenuContent.Visibility = Visibility.Collapsed;
                 Menu.Visibility = Visibility.Collapsed;
             }
         }
 
         private void Menu_PreviewMouseDown(object sender, MouseButtonEventArgs e)
         {
+            MenuContent.Visibility = Visibility.Collapsed;
             Menu.Visibility = Visibility.Collapsed;
         }
     }

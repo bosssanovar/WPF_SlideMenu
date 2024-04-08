@@ -14,10 +14,72 @@
                    Text="MainWindowView" Foreground="White"/>
         <Button Content="Button" HorizontalAlignment="Left" Margin="282,237,0,0" VerticalAlignment="Top"
                 Command="{Binding ShowWindow2}"/>
-        <Grid x:Name="Menu" Background="#AA000000" Visibility="Collapsed" d:Visibility="Visible"
+        <Grid Background="#303030" HorizontalAlignment="Left" Width="200">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <StackPanel Margin="10,100,10,50" HorizontalAlignment="Center" Orientation="Vertical"
+                            TextElement.FontSize="20" TextElement.Foreground="White">
+                    <TextBlock Text="機能AAAAAAA"/>
+                    <TextBlock Text="機能AAAAAAA"/>
+                    <TextBlock Text="機能AAAAAAA"/>
+                    <TextBlock Text="機能AAAAAAA"/>
+                    <TextBlock Text="機能AAAAAAA"/>
+                    <TextBlock Text="機能AAAAAAA"/>
+                    <TextBlock Text="機能AAAAAAA"/>
+                    <TextBlock Text="機能AAAAAAA"/>
+                </StackPanel>
+            </StackPanel>
+        </Grid>
+
+
+        <Grid x:Name="Menu" Background="#DD000000" Visibility="Collapsed" d:Visibility="Visible"
                   local:VisibilityAnimation.AnimationType="Fade"
               PreviewMouseDown="Menu_PreviewMouseDown">
-            <Grid Background="DimGray" HorizontalAlignment="Left" Width="300"/>
+            <Grid x:Name="MenuContent" Background="DimGray" HorizontalAlignment="Left" Width="500"
+                  Visibility="Collapsed" d:Visibility="Visible">
+                <Grid.Style>
+                    <Style TargetType="Grid">
+                        <Style.Triggers>
+                            <Trigger Property="Visibility" Value="Visible">
+                                <Trigger.EnterActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation Storyboard.TargetProperty="Opacity" From="0.0" To="1.0" Duration="0:0:0.2"/>
+                                            <ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="Margin" BeginTime="00:00:00">
+                                                <SplineThicknessKeyFrame KeyTime="00:00:00" Value="-100,0,0,0" />
+                                                <SplineThicknessKeyFrame KeyTime="00:00:0.2" Value="0,0,0,0" />
+                                            </ThicknessAnimationUsingKeyFrames>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </Trigger.EnterActions>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Grid.Style>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <StackPanel Margin="10,50,10,50" HorizontalAlignment="Center" Orientation="Vertical"
+                                TextElement.FontSize="20" TextElement.Foreground="White">
+                        <TextBlock Text="機能AAAAAAA"/>
+                        <TextBlock Text="機能AAAAAAA"/>
+                        <TextBlock Text="機能AAAAAAA"/>
+                        <TextBlock Text="機能AAAAAAA"/>
+                        <TextBlock Text="機能AAAAAAA"/>
+                        <TextBlock Text="機能AAAAAAA"/>
+                        <TextBlock Text="機能AAAAAAA"/>
+                        <TextBlock Text="機能AAAAAAA"/>
+                    </StackPanel>
+                    <StackPanel Margin="10,100,10,50" HorizontalAlignment="Center" Orientation="Vertical"
+                                TextElement.FontSize="20" TextElement.Foreground="White">
+                        <TextBlock Text="機能AAAAAAA"/>
+                        <TextBlock Text="機能AAAAAAA"/>
+                        <TextBlock Text="機能AAAAAAA"/>
+                        <TextBlock Text="機能AAAAAAA"/>
+                        <TextBlock Text="機能AAAAAAA"/>
+                        <TextBlock Text="機能AAAAAAA"/>
+                        <TextBlock Text="機能AAAAAAA"/>
+                        <TextBlock Text="機能AAAAAAA"/>
+                    </StackPanel>
+                </StackPanel>
+            </Grid>
         </Grid>
     </Grid>
 </local:WindowBase>

@@ -32,8 +32,7 @@ namespace WpfApp1
         /// <summary>
         /// List of hooked objects
         /// </summary>
-        private static readonly Dictionary<FrameworkElement, bool> _hookedElements =
-            new Dictionary<FrameworkElement, bool>();
+        private static readonly Dictionary<FrameworkElement, bool> _hookedElements = [];
 
         /// <summary>
         /// Get AnimationType attached property
@@ -76,9 +75,7 @@ namespace WpfApp1
             DependencyObject dependencyObject,
             DependencyPropertyChangedEventArgs e)
         {
-            FrameworkElement frameworkElement = dependencyObject as FrameworkElement;
-
-            if (frameworkElement == null)
+            if (dependencyObject is not FrameworkElement frameworkElement)
             {
                 return;
             }
@@ -111,10 +108,7 @@ namespace WpfApp1
         /// <param name="frameworkElement">Framework element</param>
         private static void UnHookVisibilityChanges(FrameworkElement frameworkElement)
         {
-            if (_hookedElements.ContainsKey(frameworkElement))
-            {
-                _hookedElements.Remove(frameworkElement);
-            }
+            _hookedElements.Remove(frameworkElement);
         }
 
         /// <summary>
@@ -154,8 +148,7 @@ namespace WpfApp1
             object baseValue)
         {
             // Make sure object is a framework element
-            FrameworkElement frameworkElement = dependencyObject as FrameworkElement;
-            if (frameworkElement == null)
+            if (dependencyObject is not FrameworkElement frameworkElement)
             {
                 return baseValue;
             }
@@ -188,7 +181,7 @@ namespace WpfApp1
             // If we get here, it means we have to start fade in or fade out animation. 
             // In any case return value of this method will be Visibility.Visible, 
             // to allow the animation.
-            DoubleAnimation doubleAnimation = new DoubleAnimation
+            DoubleAnimation doubleAnimation = new()
             {
                 Duration = new Duration(TimeSpan.FromMilliseconds(AnimationDuration))
             };

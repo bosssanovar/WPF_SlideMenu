@@ -21,7 +21,7 @@ namespace WpfApp1
     public abstract class WindowBase : Window
     {
         // Disposeが必要な処理をまとめてやる
-        protected CompositeDisposable Disposable { get; } = new();
+        protected CompositeDisposable Disposable { get; } = [];
 
         // 最小化ボタンが押された時
         public ReactiveCommand WindowMinimum { get; } = new();
